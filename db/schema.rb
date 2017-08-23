@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170823022847) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "gym_infos", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
@@ -34,8 +37,8 @@ ActiveRecord::Schema.define(version: 20170823022847) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.index ["email"], name: "index_models_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_models_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_models_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_models_on_reset_password_token", unique: true, using: :btree
   end
 
   create_table "user_gym_info_raids", force: :cascade do |t|
@@ -44,8 +47,8 @@ ActiveRecord::Schema.define(version: 20170823022847) do
     t.date     "raided_on"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["gym_info_id"], name: "index_user_gym_info_raids_on_gym_info_id"
-    t.index ["user_id"], name: "index_user_gym_info_raids_on_user_id"
+    t.index ["gym_info_id"], name: "index_user_gym_info_raids_on_gym_info_id", using: :btree
+    t.index ["user_id"], name: "index_user_gym_info_raids_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -61,8 +64,10 @@ ActiveRecord::Schema.define(version: 20170823022847) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "user_gym_info_raids", "gym_infos"
+  add_foreign_key "user_gym_info_raids", "users"
 end
