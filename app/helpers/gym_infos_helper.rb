@@ -1,0 +1,2 @@
+module GymInfosHelper
+end

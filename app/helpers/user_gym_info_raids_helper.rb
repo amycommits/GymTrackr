@@ -1,0 +1,2 @@
+module UserGymInfoRaidsHelper
+end

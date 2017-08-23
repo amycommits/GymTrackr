@@ -1,0 +1,29 @@
+<%= form_for(user_gym_info_raid) do |f| %>
+  <% if user_gym_info_raid.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user_gym_info_raid.errors.count, "error") %> prohibited this user_gym_info_raid from being saved:</h2>
+
+      <ul>
+      <% user_gym_info_raid.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <div class="field">
+    <%= f.label :gym_info_id %>
+    <%= f.text_field :gym_info_id, value: params[:gym_info_id] %>
+  </div>
+
+  <div class="field">
+    <%= f.label :raided_on %>
+    <%= f.date_select :raided_on %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

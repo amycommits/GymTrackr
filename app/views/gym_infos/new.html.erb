@@ -1,0 +1,69 @@
+<h1>New Gym Info</h1>
+<h2> Submit button will be disabled until GPS location is determined </h2>
+
+<%= form_for(@gym_info) do |f| %>
+  <% if @gym_info.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(gym_info.errors.count, "error") %> prohibited this gym_info from being saved:</h2>
+
+      <ul>
+      <% gym_info.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+
+
+  <div class="field" hidden>
+    <%= f.label :latitude %>
+    <%= f.text_field :latitude, id: 'gym-latitude' %>
+  </div>
+
+  <div class="field" hidden>
+    <%= f.label :longitude %>
+    <%= f.text_field :longitude, id: 'gym-longitude' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "add gym", :id => 'gym-info-submit' %>
+  </div>
+<% end %>
+
+
+
+
+
+
+
+<%= link_to 'View Existing Gyms', gym_infos_path %>
+<%= link_to 'Go to Dashboard', dashboard_index_path %>
+
+<script>
+
+var lat = document.getElementById("gym-latitude");
+var long = document.getElementById("gym-longitude");
+var submitButtn = document.getElementById("gym-info-submit");
+submitButtn.disabled=true;
+if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+
+
+function showPosition(position) {
+
+    lat.value = position.coords.latitude;
+    long.value = position.coords.longitude;
+    submitButtn.disabled=false;
+
+}
+
+</script>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  gym_info: one
+  raided_on: 2017-08-22
+
+two:
+  user: two
+  gym_info: two
+  raided_on: 2017-08-22

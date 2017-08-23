@@ -1,0 +1,38 @@
+<%= form_for(gym_info) do |f| %>
+  <% if gym_info.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(gym_info.errors.count, "error") %> prohibited this gym_info from being saved:</h2>
+
+      <ul>
+      <% gym_info.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <button onclick="getLocation()">Get Location</button>
+  <h1>OR</h1>
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address, id: 'gym-address' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :latitude %>
+    <%= f.text_field :latitude, id: 'gym-latitude' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :longitude %>
+    <%= f.text_field :longitude, id: 'gym-longitude' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "add gym", :id => 'gym-info-submit' %>
+  </div>
+<% end %>

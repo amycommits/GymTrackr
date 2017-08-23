@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User Gym Info Raids</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Gym Name</th>
+      <th>Add Raid</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gym_infos.each do |gym_info| %>
+      <tr>
+
+        <td><%= gym_info.name%></td>
+        <td><%= link_to 'New User Gym Info Raid', new_user_gym_info_raid_path(:gym_info_id => gym_info.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User Gym Info Raid', new_user_gym_info_raid_path %>

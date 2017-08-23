@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @user_gym_info_raid.user %>
+</p>
+
+<p>
+  <strong>Gym info:</strong>
+  <%= @user_gym_info_raid.gym_info %>
+</p>
+
+<p>
+  <strong>Raided on:</strong>
+  <%= @user_gym_info_raid.raided_on %>
+</p>
+
+<%= link_to 'Edit', edit_user_gym_info_raid_path(@user_gym_info_raid) %> |
+<%= link_to 'Back', my_raids_path %>

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Recent Raids</h1>
+
+<!--  for the current user, map the gym name, address, and latest raid date -->
+
+<table>
+  <thead>
+    <tr>
+      <th>Gym Name</th>
+      <th>Gym Address</th>
+      <th>Last Raided On</th>
+      <th>Add Raid</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_raid_list.each do |gym_info| %>
+      <tr>
+        <td><%= gym_info[:name]%></td>
+        <td><%= gym_info[:address]%></td>
+        <td><%= gym_info[:raid_date] %></td>
+        <td><%= link_to 'Add Raid', new_user_gym_info_raid_path(:gym_info_id => gym_info[:gym_id]) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
